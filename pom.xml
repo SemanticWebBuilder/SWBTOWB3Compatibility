@@ -12,6 +12,62 @@
         <activation>
           <activeByDefault>true</activeByDefault>
         </activation>
+        <repositories>
+            <repository>
+  	          <id>jitpack.io</id>
+              <url>https://jitpack.io</url>
+            </repository>
+            <repository>
+                <id>SWBExternalDeps</id>
+                <name>SWBExternalDeps</name>
+                <url>https://github.com/SemanticWebBuilder/SWBExternalDeps/raw/master/</url>
+            </repository>
+        </repositories>
+        <build>
+            <resources>
+                <resource>
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.properties</include>
+                        <include>**/*.xml</include>
+                        <include>**/*.xslt</include>
+                    </includes>
+                </resource>
+            </resources>
+        </build>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.SemanticWebBuilder</groupId>
+                <artifactId>SWBPortal</artifactId>
+                <version>master-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.semanticwb.external</groupId>
+                <artifactId>ojmail</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+        </dependencies>
+        <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+        </properties>
+      </profile>
+
+      <profile>
+        <id>Local</id>
+        <activation>
+          <property>
+            <name>local</name>
+            <value>true</value>
+          </property>
+        </activation>
         <build>
             <resources>
                 <resource>
@@ -91,6 +147,61 @@
                 <groupId>com.github.SemanticWebBuilder</groupId>
                 <artifactId>SWBPortal</artifactId>
                 <version>${branchtag}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.semanticwb.external</groupId>
+                <artifactId>ojmail</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+        </dependencies>
+        <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+        </properties>
+      </profile>
+
+      <profile>
+        <id>Release</id>
+        <activation>
+          <property>
+            <name>releasetag</name>
+          </property>
+        </activation>
+        <repositories>
+            <repository>
+  	          <id>jitpack.io</id>
+              <url>https://jitpack.io</url>
+            </repository>
+            <repository>
+                <id>SWBExternalDeps</id>
+                <name>SWBExternalDeps</name>
+                <url>https://github.com/SemanticWebBuilder/SWBExternalDeps/raw/master/</url>
+            </repository>
+        </repositories>
+        <build>
+            <resources>
+                <resource>
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.properties</include>
+                        <include>**/*.xml</include>
+                        <include>**/*.xslt</include>
+                    </includes>
+                </resource>
+            </resources>
+        </build>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.SemanticWebBuilder</groupId>
+                <artifactId>SWBPortal</artifactId>
+                <version>${releasetag}</version>
             </dependency>
             <dependency>
                 <groupId>javax</groupId>
